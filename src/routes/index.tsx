@@ -101,7 +101,7 @@ function Landing() {
             ))}
           </ol>
           <div className="mt-10 flex flex-wrap gap-3">
-            <Button asChild><Link to="/route"><MapPinned /> Try the route planner</Link></Button>
+            <Button asChild><Link to="/safe-route"><MapPinned /> Try the route planner</Link></Button>
             <Button asChild variant="outline"><Link to="/shelters">Browse shelters</Link></Button>
           </div>
         </div>

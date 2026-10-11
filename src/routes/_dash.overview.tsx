@@ -57,7 +57,7 @@ function Overview() {
       </div>
 
       <div className="mt-6 flex flex-wrap gap-3">
-        <Button asChild><Link to="/route"><Navigation /> Find a safe route</Link></Button>
+        <Button asChild><Link to="/safe-route"><Navigation /> Find a safe route</Link></Button>
         <Button asChild variant="teal"><Link to="/shelters"><Tent /> View shelters</Link></Button>
         <Button asChild variant="outline"><Link to="/report"><FileWarning /> Report an issue</Link></Button>
       </div>

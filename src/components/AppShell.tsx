@@ -18,7 +18,7 @@ import { cn } from "@/lib/utils";
 const NAV: { to: string; key: TKey; icon: typeof Home }[] = [
   { to: "/overview", key: "overview", icon: LayoutDashboard },
   { to: "/map", key: "map", icon: Map },
-  { to: "/route", key: "route", icon: Navigation },
+  { to: "/safe-route", key: "route", icon: Navigation },
   { to: "/shelters", key: "shelters", icon: Tent },
   { to: "/report", key: "report", icon: FileWarning },
   { to: "/reports", key: "reports", icon: History },

@@ -42,7 +42,7 @@ function ShelterDetail() {
           <div className="mt-2 flex flex-wrap gap-2"><VerificationPill v={s.verification} /><SimBadge label="Fictional shelter" /></div>
         </div>
         <div className="flex flex-wrap gap-2">
-          <Button asChild variant="teal"><Link to="/route" search={{ to: s.id }}><Navigation /> Directions</Link></Button>
+          <Button asChild variant="teal"><Link to="/safe-route" search={{ to: s.id }}><Navigation /> Directions</Link></Button>
           <Button asChild variant="outline"><Link to="/report" search={{ shelter: s.id }}><FileWarning /> Report an issue</Link></Button>
         </div>
       </div>

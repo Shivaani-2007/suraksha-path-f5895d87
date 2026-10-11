@@ -120,7 +120,7 @@ function MapPage() {
                 <VerificationPill v={shelter.verification} />
                 <div className="flex flex-wrap gap-2 pt-2">
                   <Button asChild size="sm"><Link to="/shelters/$id" params={{ id: shelter.id }}>Open details</Link></Button>
-                  <Button asChild size="sm" variant="teal"><Link to="/route" search={{ to: shelter.id }}>Set as destination</Link></Button>
+                  <Button asChild size="sm" variant="teal"><Link to="/safe-route" search={{ to: shelter.id }}>Set as destination</Link></Button>
                 </div>
               </div>
             )}

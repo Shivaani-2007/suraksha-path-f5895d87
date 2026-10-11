@@ -57,8 +57,8 @@ export interface Incident {
   reporterRole: string;
   createdAt: string;
   source: DataSource;
-  image?: string;
-  shelterId?: string;
+  image?: string | undefined;
+  shelterId?: string | undefined;
   history: StatusChange[];
 }
 

@@ -85,7 +85,7 @@ function MapPage() {
             <div className="space-y-2">
               {FILTERS.map(({ k, label }) => (
                 <div key={k} className="flex items-center gap-2">
-                  <Checkbox id={`f-${k}`} checked={show[k]} onCheckedChange={(v) => setShow({ ...show, [k]: !!v })} />
+                  <Checkbox id={`f-${k}`} checked={!!show[k]} onCheckedChange={(v) => setShow({ ...show, [k]: !!v })} />
                   <Label htmlFor={`f-${k}`}>{label}</Label>
                 </div>
               ))}

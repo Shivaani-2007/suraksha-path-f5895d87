@@ -40,7 +40,7 @@ function ReportPage() {
   const [role, setRole] = useState("");
   const [image, setImage] = useState<string | undefined>();
   const [imgMsg, setImgMsg] = useState("");
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState<Partial<Record<"category" | "loc" | "description" | "role", string>>>({});
   const [submitting, setSubmitting] = useState(false);
 
   const onImage = (file?: File) => {
@@ -56,7 +56,7 @@ function ReportPage() {
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
-    const errs: Record<string, string> = {};
+    const errs: Partial<Record<"category" | "loc" | "description" | "role", string>> = {};
     if (!category) errs.category = "Choose a category.";
     if (!loc) errs.loc = "Pick a location on the map or from the list.";
     if (description.trim().length < 10) errs.description = "Describe the issue in at least 10 characters.";
@@ -74,7 +74,7 @@ function ReportPage() {
     navigate({ to: "/reports" });
   };
 
-  const err = (k: string) => errors[k] && <p id={`${k}-err`} className="mt-1 text-sm text-danger">{errors[k]}</p>;
+  const err = (k: "category" | "loc" | "description" | "role") => errors[k] && <p id={`${k}-err`} className="mt-1 text-sm text-danger">{errors[k]}</p>;
 
   return (
     <>

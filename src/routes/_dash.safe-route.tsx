@@ -124,7 +124,7 @@ function RoutePlanner() {
           </fieldset>
           <div>
             <Label htmlFor="maxkm">Maximum preferred distance: {maxKm} km</Label>
-            <Slider id="maxkm" className="mt-3" min={0.5} max={6} step={0.5} value={[maxKm]} onValueChange={(v) => setMaxKm(v[0])} aria-label="Maximum preferred distance in km" />
+            <Slider id="maxkm" className="mt-3" min={0.5} max={6} step={0.5} value={[maxKm]} onValueChange={(v) => setMaxKm(v[0] ?? 3)} aria-label="Maximum preferred distance in km" />
           </div>
           {(needs.includes("assistance") || mode === "assisted") && (
             <div>

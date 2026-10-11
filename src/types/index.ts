@@ -40,7 +40,7 @@ export interface StatusChange {
   status: ReportStatus;
   at: string;
   by: string;
-  note?: string;
+  note?: string | undefined;
 }
 
 export interface Incident {

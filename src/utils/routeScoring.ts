@@ -91,9 +91,9 @@ export function scoreRoute(
 }
 
 export interface RouteComparison {
-  shortest?: ScoredRoute;
-  fewestHazards?: ScoredRoute;
-  alternative?: ScoredRoute;
+  shortest: ScoredRoute | undefined;
+  fewestHazards: ScoredRoute | undefined;
+  alternative: ScoredRoute | undefined;
   excluded: ScoredRoute[];
   all: ScoredRoute[];
   hasVerifiedSuitable: boolean;

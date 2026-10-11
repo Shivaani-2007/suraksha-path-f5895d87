@@ -1,29 +1,34 @@
-# Welcome to your Lovable project
+# SURAKSHA PATH — Accessible Evacuation. Safer Tomorrow.
 
-This project was built with [Lovable](https://lovable.dev).
+Prototype for **My Bharat Hack for Social Cause** (Disaster Resilience, Accessibility, Community Safety, GIS).
 
-## Build with Lovable
+## Problem
+Standard navigation and emergency information rarely account for individual accessibility needs — a route or shelter that works for one person may be unusable for a wheelchair user, an older adult or someone with low vision.
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+## Solution
+An interactive web app that combines an emergency map, hazard reports, accessibility-aware route comparison, a shelter directory with verification status, and community reporting with an admin review flow.
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+## Features
+- Landing page, overview dashboard (simulated metrics + chart)
+- Leaflet/OpenStreetMap map with filters, layers, search, origin selection, tile-error fallback
+- Route planner (`/safe-route`) with multi-select needs and transparent rule-based scoring (`src/utils/routeScoring.ts`, tested)
+- Shelter directory + detail pages with filters and verification labels
+- Report form (validation, optional photo), report history, demo-admin review with status log
+- Alerts with read/unread and filters; accessibility profile (large text, high contrast, reduced motion, partial Hindi)
+- Settings with demo data reset
 
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+## Setup
+```
+bun install
+bun run dev
+bunx vitest run
 ```
 
-## Built with
+## Limitations
+- All data is fictional and stored in browser localStorage only (demo mode, no secure sign-in).
+- Routes are predefined simulated scenarios, not a live routing engine.
+- Hindi translation covers navigation and key safety messages only.
+- Does not replace emergency services or official alerts. In an emergency call 112.
 
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+## Structure
+`src/types` models · `src/data` sample data · `src/services` demo store + i18n · `src/utils` scoring, filtering · `src/components` UI + map · `src/routes` pages.

@@ -10,33 +10,177 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DashRouteImport } from './routes/_dash'
+import { Route as DashAboutRouteImport } from './routes/_dash.about'
+import { Route as DashAlertsRouteImport } from './routes/_dash.alerts'
+import { Route as DashMapRouteImport } from './routes/_dash.map'
+import { Route as DashOverviewRouteImport } from './routes/_dash.overview'
+import { Route as DashProfileRouteImport } from './routes/_dash.profile'
+import { Route as DashReportRouteImport } from './routes/_dash.report'
+import { Route as DashReportsRouteImport } from './routes/_dash.reports'
+import { Route as DashSafeRouteRouteImport } from './routes/_dash.safe-route'
+import { Route as DashSettingsRouteImport } from './routes/_dash.settings'
+import { Route as DashSheltersIndexRouteImport } from './routes/_dash.shelters.index'
+import { Route as DashSheltersIdRouteImport } from './routes/_dash.shelters.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashRoute = DashRouteImport.update({
+  id: '/_dash',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashAboutRoute = DashAboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => DashRoute,
+} as any)
+const DashAlertsRoute = DashAlertsRouteImport.update({
+  id: '/alerts',
+  path: '/alerts',
+  getParentRoute: () => DashRoute,
+} as any)
+const DashMapRoute = DashMapRouteImport.update({
+  id: '/map',
+  path: '/map',
+  getParentRoute: () => DashRoute,
+} as any)
+const DashOverviewRoute = DashOverviewRouteImport.update({
+  id: '/overview',
+  path: '/overview',
+  getParentRoute: () => DashRoute,
+} as any)
+const DashProfileRoute = DashProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => DashRoute,
+} as any)
+const DashReportRoute = DashReportRouteImport.update({
+  id: '/report',
+  path: '/report',
+  getParentRoute: () => DashRoute,
+} as any)
+const DashReportsRoute = DashReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => DashRoute,
+} as any)
+const DashSafeRouteRoute = DashSafeRouteRouteImport.update({
+  id: '/safe-route',
+  path: '/safe-route',
+  getParentRoute: () => DashRoute,
+} as any)
+const DashSettingsRoute = DashSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => DashRoute,
+} as any)
+const DashSheltersIndexRoute = DashSheltersIndexRouteImport.update({
+  id: '/shelters/',
+  path: '/shelters/',
+  getParentRoute: () => DashRoute,
+} as any)
+const DashSheltersIdRoute = DashSheltersIdRouteImport.update({
+  id: '/shelters/$id',
+  path: '/shelters/$id',
+  getParentRoute: () => DashRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof DashAboutRoute
+  '/alerts': typeof DashAlertsRoute
+  '/map': typeof DashMapRoute
+  '/overview': typeof DashOverviewRoute
+  '/profile': typeof DashProfileRoute
+  '/report': typeof DashReportRoute
+  '/reports': typeof DashReportsRoute
+  '/safe-route': typeof DashSafeRouteRoute
+  '/settings': typeof DashSettingsRoute
+  '/shelters/$id': typeof DashSheltersIdRoute
+  '/shelters/': typeof DashSheltersIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof DashAboutRoute
+  '/alerts': typeof DashAlertsRoute
+  '/map': typeof DashMapRoute
+  '/overview': typeof DashOverviewRoute
+  '/profile': typeof DashProfileRoute
+  '/report': typeof DashReportRoute
+  '/reports': typeof DashReportsRoute
+  '/safe-route': typeof DashSafeRouteRoute
+  '/settings': typeof DashSettingsRoute
+  '/shelters/$id': typeof DashSheltersIdRoute
+  '/shelters': typeof DashSheltersIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_dash': typeof DashRouteWithChildren
+  '/_dash/about': typeof DashAboutRoute
+  '/_dash/alerts': typeof DashAlertsRoute
+  '/_dash/map': typeof DashMapRoute
+  '/_dash/overview': typeof DashOverviewRoute
+  '/_dash/profile': typeof DashProfileRoute
+  '/_dash/report': typeof DashReportRoute
+  '/_dash/reports': typeof DashReportsRoute
+  '/_dash/safe-route': typeof DashSafeRouteRoute
+  '/_dash/settings': typeof DashSettingsRoute
+  '/_dash/shelters/$id': typeof DashSheltersIdRoute
+  '/_dash/shelters/': typeof DashSheltersIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/alerts'
+    | '/map'
+    | '/overview'
+    | '/profile'
+    | '/report'
+    | '/reports'
+    | '/safe-route'
+    | '/settings'
+    | '/shelters/$id'
+    | '/shelters/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/alerts'
+    | '/map'
+    | '/overview'
+    | '/profile'
+    | '/report'
+    | '/reports'
+    | '/safe-route'
+    | '/settings'
+    | '/shelters/$id'
+    | '/shelters'
+  id:
+    | '__root__'
+    | '/'
+    | '/_dash'
+    | '/_dash/about'
+    | '/_dash/alerts'
+    | '/_dash/map'
+    | '/_dash/overview'
+    | '/_dash/profile'
+    | '/_dash/report'
+    | '/_dash/reports'
+    | '/_dash/safe-route'
+    | '/_dash/settings'
+    | '/_dash/shelters/$id'
+    | '/_dash/shelters/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DashRoute: typeof DashRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +192,126 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_dash': {
+      id: '/_dash'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof DashRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_dash/about': {
+      id: '/_dash/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof DashAboutRouteImport
+      parentRoute: typeof DashRoute
+    }
+    '/_dash/alerts': {
+      id: '/_dash/alerts'
+      path: '/alerts'
+      fullPath: '/alerts'
+      preLoaderRoute: typeof DashAlertsRouteImport
+      parentRoute: typeof DashRoute
+    }
+    '/_dash/map': {
+      id: '/_dash/map'
+      path: '/map'
+      fullPath: '/map'
+      preLoaderRoute: typeof DashMapRouteImport
+      parentRoute: typeof DashRoute
+    }
+    '/_dash/overview': {
+      id: '/_dash/overview'
+      path: '/overview'
+      fullPath: '/overview'
+      preLoaderRoute: typeof DashOverviewRouteImport
+      parentRoute: typeof DashRoute
+    }
+    '/_dash/profile': {
+      id: '/_dash/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof DashProfileRouteImport
+      parentRoute: typeof DashRoute
+    }
+    '/_dash/report': {
+      id: '/_dash/report'
+      path: '/report'
+      fullPath: '/report'
+      preLoaderRoute: typeof DashReportRouteImport
+      parentRoute: typeof DashRoute
+    }
+    '/_dash/reports': {
+      id: '/_dash/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof DashReportsRouteImport
+      parentRoute: typeof DashRoute
+    }
+    '/_dash/safe-route': {
+      id: '/_dash/safe-route'
+      path: '/safe-route'
+      fullPath: '/safe-route'
+      preLoaderRoute: typeof DashSafeRouteRouteImport
+      parentRoute: typeof DashRoute
+    }
+    '/_dash/settings': {
+      id: '/_dash/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof DashSettingsRouteImport
+      parentRoute: typeof DashRoute
+    }
+    '/_dash/shelters/': {
+      id: '/_dash/shelters/'
+      path: '/shelters'
+      fullPath: '/shelters/'
+      preLoaderRoute: typeof DashSheltersIndexRouteImport
+      parentRoute: typeof DashRoute
+    }
+    '/_dash/shelters/$id': {
+      id: '/_dash/shelters/$id'
+      path: '/shelters/$id'
+      fullPath: '/shelters/$id'
+      preLoaderRoute: typeof DashSheltersIdRouteImport
+      parentRoute: typeof DashRoute
+    }
   }
 }
 
+interface DashRouteChildren {
+  DashAboutRoute: typeof DashAboutRoute
+  DashAlertsRoute: typeof DashAlertsRoute
+  DashMapRoute: typeof DashMapRoute
+  DashOverviewRoute: typeof DashOverviewRoute
+  DashProfileRoute: typeof DashProfileRoute
+  DashReportRoute: typeof DashReportRoute
+  DashReportsRoute: typeof DashReportsRoute
+  DashSafeRouteRoute: typeof DashSafeRouteRoute
+  DashSettingsRoute: typeof DashSettingsRoute
+  DashSheltersIdRoute: typeof DashSheltersIdRoute
+  DashSheltersIndexRoute: typeof DashSheltersIndexRoute
+}
+
+const DashRouteChildren: DashRouteChildren = {
+  DashAboutRoute: DashAboutRoute,
+  DashAlertsRoute: DashAlertsRoute,
+  DashMapRoute: DashMapRoute,
+  DashOverviewRoute: DashOverviewRoute,
+  DashProfileRoute: DashProfileRoute,
+  DashReportRoute: DashReportRoute,
+  DashReportsRoute: DashReportsRoute,
+  DashSafeRouteRoute: DashSafeRouteRoute,
+  DashSettingsRoute: DashSettingsRoute,
+  DashSheltersIdRoute: DashSheltersIdRoute,
+  DashSheltersIndexRoute: DashSheltersIndexRoute,
+}
+
+const DashRouteWithChildren = DashRoute._addFileChildren(DashRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DashRoute: DashRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

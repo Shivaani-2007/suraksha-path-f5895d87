@@ -10,33 +10,58 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DashRouteImport } from './routes/_dash'
+import { Route as DashMapRouteImport } from './routes/_dash.map'
+import { Route as DashOverviewRouteImport } from './routes/_dash.overview'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashRoute = DashRouteImport.update({
+  id: '/_dash',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashMapRoute = DashMapRouteImport.update({
+  id: '/map',
+  path: '/map',
+  getParentRoute: () => DashRoute,
+} as any)
+const DashOverviewRoute = DashOverviewRouteImport.update({
+  id: '/overview',
+  path: '/overview',
+  getParentRoute: () => DashRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/map': typeof DashMapRoute
+  '/overview': typeof DashOverviewRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/map': typeof DashMapRoute
+  '/overview': typeof DashOverviewRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_dash': typeof DashRouteWithChildren
+  '/_dash/map': typeof DashMapRoute
+  '/_dash/overview': typeof DashOverviewRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/map' | '/overview'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/map' | '/overview'
+  id: '__root__' | '/' | '/_dash' | '/_dash/map' | '/_dash/overview'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DashRoute: typeof DashRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +73,45 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_dash': {
+      id: '/_dash'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof DashRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_dash/map': {
+      id: '/_dash/map'
+      path: '/map'
+      fullPath: '/map'
+      preLoaderRoute: typeof DashMapRouteImport
+      parentRoute: typeof DashRoute
+    }
+    '/_dash/overview': {
+      id: '/_dash/overview'
+      path: '/overview'
+      fullPath: '/overview'
+      preLoaderRoute: typeof DashOverviewRouteImport
+      parentRoute: typeof DashRoute
+    }
   }
 }
 
+interface DashRouteChildren {
+  DashMapRoute: typeof DashMapRoute
+  DashOverviewRoute: typeof DashOverviewRoute
+}
+
+const DashRouteChildren: DashRouteChildren = {
+  DashMapRoute: DashMapRoute,
+  DashOverviewRoute: DashOverviewRoute,
+}
+
+const DashRouteWithChildren = DashRoute._addFileChildren(DashRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DashRoute: DashRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

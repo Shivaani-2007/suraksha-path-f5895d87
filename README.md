@@ -23,6 +23,8 @@ bun install
 bun run dev
 bunx vitest run
 ```
+Then open the local dev server URL printed in your terminal to view the app.
+
 
 ## Limitations
 - All data is fictional and stored in browser localStorage only (demo mode, no secure sign-in).

@@ -16,7 +16,7 @@ import { needLabel } from "@/utils/labels";
 import { timeAgo } from "@/utils/geo";
 import type { AccessNeed } from "@/types";
 
-export const Route = createFileRoute("/_dash")({
+export const Route = createFileRoute("/_dash/safe-route")({
   validateSearch: z.object({ to: z.string().optional(), from: z.string().optional() }),
   head: () => ({
     meta: [
